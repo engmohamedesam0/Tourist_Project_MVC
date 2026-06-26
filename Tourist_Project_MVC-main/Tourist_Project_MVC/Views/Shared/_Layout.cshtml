@@ -2,49 +2,287 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Tourist_Project_MVC</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Tourist_Project_MVC.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tourist_Project_MVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - EGYXPLORE</title>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Tourist_Project_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts - Ancient Egypt Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+
+    <!-- Grayscale Theme CSS -->
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+    <style>
+        :root {
+        --egy-primary: #C8832A;
+        --egy-dark: #2C1A0E;
+        --egy-light: #FDF6EC;
+        --egy-accent: #E8A045;
+        }
+
+        /* Egypt font for headings and brand */
+        .navbar-brand,
+        .page-title,
+        h1, h2, h3, h4, h5 {
+        font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
+        }
+
+        /* Body text */
+        body {
+        font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-primary {
+        background-color: var(--egy-primary) !important;
+        border-color: var(--egy-primary) !important;
+        }
+
+        .btn-primary:hover {
+        background-color: var(--egy-accent) !important;
+        border-color: var(--egy-accent) !important;
+        }
+
+        /* Navbar */
+        #mainNav {
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+        }
+
+        #mainNav.navbar-shrink {
+        background-color: var(--egy-dark) !important;
+        border-bottom: 3px solid var(--egy-primary);
+        }
+
+        #mainNav .navbar-brand {
+        color: var(--egy-accent) !important;
+        font-family: 'Cinzel Decorative', serif !important;
+        font-size: 1.4rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        }
+
+        #mainNav .navbar-brand span {
+        color: white;
+        }
+
+        #mainNav .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-family: 'Cinzel', serif !important;
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: color 0.2s, background-color 0.2s;
+        border-radius: 4px;
+        padding: 6px 12px !important;
+        }
+
+        /* HOVER - بني غامق واضح */
+        #mainNav .nav-link:hover,
+        #mainNav .nav-item:hover > .nav-link {
+        color: #fff !important;
+        background-color: var(--egy-primary) !important;
+        }
+
+        #mainNav .nav-link i {
+        margin-right: 4px;
+        }
+
+        /* Dropdown toggle hover fix */
+        #mainNav .dropdown:hover > .nav-link {
+        color: #fff !important;
+        background-color: var(--egy-primary) !important;
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+        background-color: var(--egy-dark);
+        border: 1px solid var(--egy-primary);
+        border-radius: 0;
+        }
+
+        .dropdown-item {
+        color: #f0d9b5;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        }
+
+        .dropdown-item:hover {
+        background-color: var(--egy-primary);
+        color: white;
+        }
+
+        /* Inner pages */
+        .inner-page-body {
+        background-color: var(--egy-light);
+        padding-top: 80px;
+        min-height: 80vh;
+        }
+
+        .inner-page-body .container {
+        font-family: 'Nunito', sans-serif;
+        }
+
+        /* Tables */
+        .table thead {
+        background-color: var(--egy-dark);
+        color: white;
+        }
+
+        .table thead th {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        }
+
+        /* Page title */
+        .page-title {
+        color: var(--egy-dark);
+        font-family: 'Cinzel Decorative', serif !important;
+        border-bottom: 2px solid var(--egy-primary);
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        }
+
+        /* Footer */
+        footer.footer {
+        background-color: var(--egy-dark) !important;
+        color: #f0d9b5 !important;
+        border-top: 3px solid var(--egy-primary);
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+        }
+
+        /* Navbar toggler */
+        .navbar-toggler {
+        border-color: var(--egy-accent);
+        }
+
+        .navbar-toggler-icon {
+        filter: invert(1);
+        }
+    </style>
+</head>
+<body id="page-top">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+
+            <!-- Brand -->
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                🏺 EGY<span>XPLORE</span>
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler navbar-toggler-right"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                Menu <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Destination" asp-action="Index">
+                            <i class="bi bi-geo-alt-fill"></i> Destinations
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Tourist" asp-action="Index">
+                            <i class="bi bi-people-fill"></i> Tourists
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Mission" asp-action="Index">
+                            <i class="bi bi-trophy-fill"></i> Missions
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-gift-fill"></i> Rewards
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Reward" asp-action="Index">
+                                    <i class="bi bi-star-fill"></i> All Rewards
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-controller="Sponsor" asp-action="Index">
+                                    <i class="bi bi-building"></i> Sponsors
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="TripPlan" asp-action="Index">
+                            <i class="bi bi-map-fill"></i> Trip Plans
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    @if (ViewData["IsHomePage"] as bool? == true)
+    {
+        @RenderBody()
+    }
+    else
+    {
+        <div class="inner-page-body">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    }
+
+    <!-- FOOTER -->
+    <footer class="footer bg-black small text-center text-white-50">
+        <div class="container px-4 px-lg-5">
+            🏺 EGYXPLORE &copy; @DateTime.Now.Year — Unlock Hidden Wonders Across Egypt
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Grayscale Scripts -->
+    <script src="~/js/scripts.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

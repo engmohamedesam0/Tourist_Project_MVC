@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tourist_Project_MVC.Data;
+using Tourist_Project_MVC.Repositories;
 
 namespace Tourist_Project_MVC
 {
@@ -14,7 +15,12 @@ namespace Tourist_Project_MVC
 
             builder.Services.AddDbContext<TouristContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("CS")));
-
+            builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
+            builder.Services.AddScoped<ITouristRepository, TouristRepository>();
+            builder.Services.AddScoped<IMissionRepository, MissionRepository>();
+            builder.Services.AddScoped<IRewardRepository, RewardRepository>();
+            builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
+            builder.Services.AddScoped<ITripPlanRepository, TripPlanRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
