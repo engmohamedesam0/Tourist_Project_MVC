@@ -12,8 +12,8 @@
         public int point_Balance { get; set; }
         public DateTime RegisterDate { get; set; }
 
-        List<TripPlan> TripPlans { get; set; }
-        List<UserMission> UserMissions { get; set; }
-        List<Redemption> Redemptions { get; set; }
+        public List<TripPlan> TripPlans { get; set; }
+        public List<UserMission> UserMissions { get; set; }
+        public List<Redemption> Redemptions { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace Tourist_Project_MVC.Models
         public int SponsorId { get; set; }
         public Sponsor Sponsor { get; set; }
 
-        List<Redemption> Redemptions { get; set; }
+        public List<Redemption> Redemptions { get; set; }
     }
 }
