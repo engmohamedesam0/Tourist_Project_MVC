@@ -15,7 +15,7 @@ namespace Tourist_Project_MVC.Models
         public string? description { get; set; }
         public decimal? TicketPrice { get; set; }
 
-        public List<Mission> Missions { get; set; }
-        public List<TripDestination> TripDestinations { get; set; }
+        public List<Mission>? Missions { get; set; }
+        public List<TripDestination>? TripDestinations { get; set; }
     }
 }

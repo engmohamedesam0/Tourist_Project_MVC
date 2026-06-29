@@ -12,9 +12,9 @@ namespace Tourist_Project_MVC.Models
 
         [ForeignKey("RewardId")]
         public int RewardId { get; set; }
-        public Reward Reward { get; set; }
+        public Reward? Reward { get; set; }
         [ForeignKey("TouristId")]
         public int TouristId { get; set; }
-        public Tourist Tourist { get; set; }
+        public Tourist? Tourist { get; set; }
     }
 }

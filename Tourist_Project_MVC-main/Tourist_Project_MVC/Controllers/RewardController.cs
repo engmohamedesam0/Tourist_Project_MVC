@@ -58,6 +58,7 @@ namespace Tourist_Project_MVC.Controllers
                     PointsRequired = NewReward.PointsRequired,
                     QuantityAvailable = NewReward.QuantityAvailable,
                     SponsorId = NewReward.SponsorId,
+                    ExpirationDate = NewReward.ExpirationDate,
                 };
                 _repo.Add(Reward);
                 _repo.Save();
@@ -114,6 +115,7 @@ namespace Tourist_Project_MVC.Controllers
                 _repo.Save();
                 return RedirectToAction("Index");
             }
+            rewardVM.Sponsors = SponserRepo.GetAll();
             return View("Edit", rewardVM);
         }
 
