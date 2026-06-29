@@ -63,6 +63,7 @@ namespace Tourist_Project_MVC.Controllers
                 _repo.Save();
                 return RedirectToAction("Index");
             }
+            NewReward.Sponsors = SponserRepo.GetAll();
             return View("Create", NewReward);
         }
 
