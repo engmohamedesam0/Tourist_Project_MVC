@@ -12,8 +12,8 @@ namespace Tourist_Project_MVC.Models
 
         [ForeignKey("DestinationId")]
         public int DestinationId { get; set; }
-        public Destination ?Destination { get; set; }
+        public Destination? Destination { get; set; }
 
-        public List<UserMission> UserMissions { get; set; }
+        public List<UserMission>? UserMissions { get; set; }
     }
 }

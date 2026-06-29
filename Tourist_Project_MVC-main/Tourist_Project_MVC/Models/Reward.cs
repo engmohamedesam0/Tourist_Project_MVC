@@ -14,8 +14,8 @@ namespace Tourist_Project_MVC.Models
 
         [ForeignKey("SponsorId")]
         public int SponsorId { get; set; }
-        public Sponsor Sponsor { get; set; }
+        public Sponsor? Sponsor { get; set; }
 
-        public List<Redemption> Redemptions { get; set; }
+        public List<Redemption>? Redemptions { get; set; }
     }
 }

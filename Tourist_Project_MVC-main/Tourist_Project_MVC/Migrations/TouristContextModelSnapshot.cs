@@ -505,7 +505,7 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.Mission", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Destination", "Destination")
-                        .WithMany()
+                        .WithMany("Missions")
                         .HasForeignKey("DestinationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -516,13 +516,13 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.Redemption", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Reward", "Reward")
-                        .WithMany()
+                        .WithMany("Redemptions")
                         .HasForeignKey("RewardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Tourist_Project_MVC.Models.Tourist", "Tourist")
-                        .WithMany()
+                        .WithMany("Redemptions")
                         .HasForeignKey("TouristId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -535,7 +535,7 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.Reward", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Sponsor", "Sponsor")
-                        .WithMany()
+                        .WithMany("Rewards")
                         .HasForeignKey("SponsorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -546,13 +546,13 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.TripDestination", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Destination", "Destination")
-                        .WithMany()
+                        .WithMany("TripDestinations")
                         .HasForeignKey("DestinationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Tourist_Project_MVC.Models.TripPlan", "TripPlan")
-                        .WithMany()
+                        .WithMany("TripDestinations")
                         .HasForeignKey("TripPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -565,7 +565,7 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.TripPlan", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Tourist", "Tourist")
-                        .WithMany()
+                        .WithMany("TripPlans")
                         .HasForeignKey("TouristId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -576,13 +576,13 @@ namespace Tourist_Project_MVC.Migrations
             modelBuilder.Entity("Tourist_Project_MVC.Models.UserMission", b =>
                 {
                     b.HasOne("Tourist_Project_MVC.Models.Mission", "Mission")
-                        .WithMany()
+                        .WithMany("UserMissions")
                         .HasForeignKey("MissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Tourist_Project_MVC.Models.Tourist", "Tourist")
-                        .WithMany()
+                        .WithMany("UserMissions")
                         .HasForeignKey("TouristId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -590,6 +590,42 @@ namespace Tourist_Project_MVC.Migrations
                     b.Navigation("Mission");
 
                     b.Navigation("Tourist");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.Destination", b =>
+                {
+                    b.Navigation("Missions");
+
+                    b.Navigation("TripDestinations");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.Mission", b =>
+                {
+                    b.Navigation("UserMissions");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.Reward", b =>
+                {
+                    b.Navigation("Redemptions");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.Sponsor", b =>
+                {
+                    b.Navigation("Rewards");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.Tourist", b =>
+                {
+                    b.Navigation("Redemptions");
+
+                    b.Navigation("TripPlans");
+
+                    b.Navigation("UserMissions");
+                });
+
+            modelBuilder.Entity("Tourist_Project_MVC.Models.TripPlan", b =>
+                {
+                    b.Navigation("TripDestinations");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,6 @@
         public string Type { get; set; }
         public string Address { get; set; }
         public int ContactNumber { get; set; }
-        public List<Reward> Rewards { get; set; }
+        public List<Reward>? Rewards { get; set; }
     }
 }

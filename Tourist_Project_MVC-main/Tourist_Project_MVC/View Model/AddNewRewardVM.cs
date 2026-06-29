@@ -12,6 +12,7 @@ namespace Tourist_Project_MVC.View_Model
         public string Description { get; set; }
         public int PointsRequired { get; set; }
         public int QuantityAvailable { get; set; }
+        [Display(Name = "Expiration Date")]
         public DateTime ExpirationDate { get; set; }
 
         public int SponsorId { get; set; }

@@ -11,9 +11,9 @@ namespace Tourist_Project_MVC.Models
 
         [ForeignKey("TripPlanId")]
         public int TripPlanId { get; set; }
-        public TripPlan TripPlan { get; set; }
+        public TripPlan? TripPlan { get; set; }
         [ForeignKey("DestinationId")]
         public int DestinationId { get; set; }
-        public Destination Destination { get; set; }
+        public Destination? Destination { get; set; }
     }
 }
