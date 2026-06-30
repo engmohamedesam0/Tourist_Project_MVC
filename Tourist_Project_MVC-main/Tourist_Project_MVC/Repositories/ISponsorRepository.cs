@@ -2,5 +2,9 @@
 
 namespace Tourist_Project_MVC.Repositories
 {
-    public interface ISponsorRepository : IRepository<Sponsor> { }
+    public interface ISponsorRepository : IRepository<Sponsor>
+    { 
+        public Sponsor GetByIdWithRewars(int id);
+    
+    }
 }

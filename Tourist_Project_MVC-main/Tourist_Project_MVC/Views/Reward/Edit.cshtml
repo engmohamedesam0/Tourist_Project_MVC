@@ -5,9 +5,8 @@
     SelectList SponsorOptions = new SelectList(Model.Sponsors, "Id", "Name");
 }
 
-
 <div class="container mt-4">
-    <h2>✏️ Edit Mission</h2>
+    <h2>✏️ Edit Reward</h2>
     <hr />
     
     <form asp-action="Edit">
@@ -50,16 +49,16 @@
             <span asp-validation-for="ExpirationDate" class="text-danger"></span>
         </div>
 
-        <label asp-for="Sponsors" class="control-label"></label>
-        <select asp-for="SponsorId" asp-items="SponsorOptions" class="form form-control">
-            <option value="">--Select Sponsor--</option>
-        </select>
-        <span asp-validation-for="SponsorId" class="text-danger"></span>
+            <label asp-for="Sponsors" class="control-label"></label>
+            <select asp-for="SponsorId" asp-items="SponsorOptions" class="form form-control">
+                <option value="">--Select Sponsor--</option>
+            </select>
+            <span asp-validation-for="SponsorId" class="text-danger"></span>
 
 
         <div class="mb-3">
-        <input type="submit" value="Update" class="btn btn-warning" />
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            <input type="submit" value="Update" class="btn btn-warning" />
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
         </div>
     </form>
 </div>
