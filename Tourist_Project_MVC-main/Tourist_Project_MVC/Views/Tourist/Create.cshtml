@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Add Tourist";
 }
-
+@if (User.Identity.IsAuthenticated)
+{
 <div class="container mt-4">
     <h2>➕ Add New Tourist</h2>
     <hr />
@@ -48,3 +49,4 @@
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
+}

@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Tourist_Project_MVC.Data;
 using Tourist_Project_MVC.Repositories;
-
+using Tourist_Project_MVC.Data;
+using Tourist_Project_MVC.Models;
+using Microsoft.AspNetCore.Identity;
 namespace Tourist_Project_MVC
 {
     public class Program
@@ -13,16 +14,23 @@ namespace Tourist_Project_MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<TouristContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CS")));
             builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
             builder.Services.AddScoped<ITouristRepository, TouristRepository>();
             builder.Services.AddScoped<IMissionRepository, MissionRepository>();
             builder.Services.AddScoped<IRewardRepository, RewardRepository>();
             builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
             builder.Services.AddScoped<ITripPlanRepository, TripPlanRepository>();
-            var app = builder.Build();
 
+            builder.Services.AddDbContext<TouristContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CS")));
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 12;
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<TouristContext>();
+
+            var app = builder.Build();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
