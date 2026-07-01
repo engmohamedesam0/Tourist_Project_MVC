@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Tourist_Project_MVC.Models;
 using Tourist_Project_MVC.Repositories;
 using Tourist_Project_MVC.View_Model;
@@ -35,7 +36,8 @@ namespace Tourist_Project_MVC.Controllers
         }
         #endregion
 
-        #region Edit
+        #region Edit(Only_Admin)
+        [Authorize(Roles ="Admin")]
         public IActionResult Edit(int id)
         {
             Sponsor? sponsorFromDB = sponsorRepo.GetById(id);
@@ -58,6 +60,7 @@ namespace Tourist_Project_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(sponsorViewModel sponsorFromReq)
         {
             if (ModelState.IsValid)
@@ -76,7 +79,8 @@ namespace Tourist_Project_MVC.Controllers
         }
         #endregion
 
-        #region Create
+        #region Create(Only_Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             sponsorViewModel createSponsorModel = new sponsorViewModel();
@@ -84,6 +88,7 @@ namespace Tourist_Project_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(sponsorViewModel sponsorFromReq)
         {
             if (ModelState.IsValid)
@@ -103,7 +108,8 @@ namespace Tourist_Project_MVC.Controllers
         }
         #endregion
 
-        #region Delete
+        #region Delete(Only_Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             Sponsor sponsorFromDB = sponsorRepo.GetById(id);
@@ -124,6 +130,7 @@ namespace Tourist_Project_MVC.Controllers
 
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             sponsorRepo.Delete(id);
