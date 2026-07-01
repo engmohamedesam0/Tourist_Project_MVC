@@ -48,8 +48,10 @@
         
         
    
+     @if (User.IsInRole("admin"))
+    {
+        <a asp-action="Edit" asp-controller="Sponsor" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    }
     
-
-    <a asp-action="Edit" asp-controller="Sponsor" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
         <a asp-action="Index" asp-controller="Sponsor" class="btn btn-secondary">Back to List</a>
 </div>
