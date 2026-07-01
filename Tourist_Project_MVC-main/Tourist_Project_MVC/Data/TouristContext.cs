@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Tourist_Project_MVC.Models;
 
 namespace Tourist_Project_MVC.Data
 {
-    public class TouristContext : DbContext
+    public class TouristContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<TripPlan> TripPlans { get; set; }

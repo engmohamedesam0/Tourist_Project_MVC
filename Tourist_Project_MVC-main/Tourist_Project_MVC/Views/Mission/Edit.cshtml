@@ -5,8 +5,9 @@
     SelectList destList = new SelectList(Model.destinations, "Id", "Name");
 }
 
-
-<div class="container mt-4">
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container mt-4">
     <h2>✏️ Edit Mission</h2>
     <hr />
     
@@ -46,9 +47,8 @@
         </form>
     
 </div>
+}
 
-<div>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
